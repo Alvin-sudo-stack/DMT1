@@ -446,6 +446,15 @@ type argument values. Be sure you compare and contrast
 this code with that using the first version of *ident.*
 @@@ -/
 
+def compose {α β γ : Type} (f : α → β) (g : β → γ) :=
+  fun a => g (f a)
+
+def isEvLenStr' : String -> Bool := compose String.length isEven
+#eval isEvLenStr'
+#check Function.comp
+#eval compose String.length isEven
+#eval (isEven ∘ String.length)
+def isEvenLengthString := compose String.length isEven
 
 /- @@@
 ## Function Definition by Case Analysis
